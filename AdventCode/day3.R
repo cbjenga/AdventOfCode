@@ -54,20 +54,18 @@ strtoi(gamma, base = 2) * strtoi(epsilon, base = 2)
 input <- read_table2(here::here("data","inputDay3.txt"),col_names = FALSE) %>%
   separate(X1,paste0("d",seq(1,12,1)),sep = seq(1,12,1)) 
 
-workingData <- input
-
 
 
 idOut2 <- function(rate = "gamma",sumVal,maxVal){
-#  cat(str(sumVal),str(rate))
-   return(case_when(rate=="gamma" ~ as.numeric(sumVal >= (maxVal / 2)),
-                    rate=="epsilon" ~ as.numeric(sumVal < (maxVal / 2)),
-                    TRUE ~ -50)
-   )
+  return(case_when(rate=="gamma" ~ as.numeric(sumVal >= (maxVal / 2)),
+                   rate=="epsilon" ~ as.numeric(sumVal < (maxVal / 2)),
+                   TRUE ~ -50)
+  )
 }
 
 
-i <- 1
+
+workingData <- input
 for(i in seq(1,12)){
   
   newNum <- workingData %>%
@@ -85,8 +83,9 @@ for(i in seq(1,12)){
 }
 o2 <- paste0(workingData,collapse = "")
 
-workingData <- input
 
+
+workingData <- input
 for(i in seq(1,12)){
   
   newNum <- workingData %>%
