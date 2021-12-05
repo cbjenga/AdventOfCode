@@ -2,9 +2,9 @@ library(readr)
 library(here)
 library(tidyverse)
 library(RcppRoll)
-library(purr)
-# 5.1
+library(purrr)
 
+# 5.1
 inputDay5 <- read_csv(here::here("data","inputDay5.txt"),col_names = FALSE) %>%
   separate(X2, into = c("Y1","X2")) %>%
   rename(Y2 = X3) %>%
@@ -71,7 +71,7 @@ for(i in seq(1,500)){
       hits[xSeq[j],ySeq[j]] <- hits[xSeq[j],ySeq[j]]+1
     }
   }
-  
 }
+
 
 sum(hits > 1)
